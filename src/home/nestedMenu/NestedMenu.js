@@ -1,12 +1,36 @@
 import React from 'react';
-import Button from '../menu/button/Button';
 
-const GenerateHeaderMenu = ({ menuData }) => (
+const HeaderMenu = ({ menuData, onClick }) => (
     <>
         {menuData.menuArray.header.children.map((menuResult, key) => (
-            <div key={key}>{menuResult.title}</div>
+            <MenuButton title={menuResult.title} id={menuResult.id} key={key} onClick={onClick}/>
         ))} 
     </>
+)
+
+const DefaultMenu = ({ menuData, onClick}) => (
+    <>
+        {
+            
+            Object.keys(menuData.menuArray).map((title, key) =>(
+                <MenuButton title={title.toUpperCase()} id={title} key={key} onClick={onClick} />
+        ))}
+    </>
+)
+
+
+const MenuButton = ({title, id, onClick}) => (
+    <a
+        href="#0" 
+        className="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box w-100 mv2"
+        onClick={() => onClick(id)}
+    >
+        <span className="pr1">{title}</span>
+        <svg className="w1" data-icon="chevronRight" viewBox="0 0 32 32" style={{"fill":"currentcolor"}} >
+            <title>chevronRight icon</title>
+            <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+        </svg>
+    </a>
 )
 // header this.button(menuResult.title, menuResult.id, key)
 const menuData = {
@@ -34,6 +58,10 @@ const menuData = {
                 {
                     title: 'Design #5',
                     id: 'd5'
+                },
+                {
+                    title: 'Back',
+                    id:''
                 }
             ]
         },
@@ -111,49 +139,15 @@ export default class NestedMenu extends React.Component{
         });
     }
 
-    button = (title, id, key) => {
-        const { onClick } = this;
-        console.log("called")
-        return(
-            <a
-                key={key} 
-                href="#0" 
-                className="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box w-100 mv2"
-                onClick={() => onClick(id)}
-            >
-                <span className="pr1">{title}</span>
-                <svg className="w1" data-icon="chevronRight" viewBox="0 0 32 32" style={{"fill":"currentcolor"}} >
-                    <title>chevronRight icon</title>
-                    <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-                </svg>
-            </a>
-        );
-    }
-
-    generateDefaultMenu = () => {
-        const { onClick } = this;
-        const { menuArray } = this.state
-        const test = Object.keys(menuArray).forEach(title =>
-        <Button title={title.toUpperCase()} id={title} key={1} onClick={onClick} />
-        )
-        return(
-            <div>
-                {test}
-            </div>
-        )
-    }
-    
     render () {
         const { menuState } = this.state;
-        const { generateHeaderMenu } = this;
+        const { onClick } = this;
         switch(menuState){
             case 'header':
-                return generateHeaderMenu();
+                return <HeaderMenu menuData={menuData} onClick={onClick}/>
             default:
                 return(
-                    <div>
-                        <GenerateHeaderMenu menuData={menuData}/>
-                    </div>
+                    <DefaultMenu menuData={menuData} onClick={onClick} />
                 )
 
         }
