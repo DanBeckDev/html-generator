@@ -1,6 +1,6 @@
 import React from 'react';
-import menuData from './menuData.json';
-import { HeaderMenu, DefaultMenu } from './MenuStates';
+import menuData from './menuData';
+import { DefaultMenu, ChildMenu } from './MenuStates';
 
 export default class NestedMenu extends React.Component{
     constructor () {
@@ -19,14 +19,18 @@ export default class NestedMenu extends React.Component{
     render () {
         const { menuState } = this.state;
         const { onClick } = this;
+        const { menuArray} = menuData;
         switch(menuState){
             case 'header':
-                return <HeaderMenu menuData={menuData} onClick={onClick}/>
+                return <ChildMenu menuData={menuArray.header.children} onClick={onClick} onTemplateChange={this.props.onTemplateChange}/>
+            case 'body':
+                return <ChildMenu menuData={menuArray.body.children} onClick={onClick} onTemplateChange={this.props.onTemplateChange}/>
+            case 'footer':
+                return <ChildMenu menuData={menuArray.footer.children} onClick={onClick} onTemplateChange={this.props.onTemplateChange}/>
             default:
                 return(
-                    <DefaultMenu menuData={menuData} onClick={onClick} />
+                    <DefaultMenu menuData={menuArray} onClick={onClick} />
                 )
-
         }
     }
 }
