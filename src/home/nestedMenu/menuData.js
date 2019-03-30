@@ -1,5 +1,6 @@
 import React from 'react';
-import { HeaderOne, HeaderTwo, HeaderThree, HeaderFour, HeaderFive } from '../header/Header'  
+import { HeaderOne, HeaderTwo, HeaderThree, HeaderFour, HeaderFive } from '../collections/Header'  
+import { Movies, Albums, Posters } from '../collections/Body'
 
 export const menuData = {
     menuArray: {
@@ -38,21 +39,28 @@ export const menuData = {
                 }
             ]
         },
-        body: {
-            title: "Body",
-            id: "body",
+        main: {
+            title: "Main",
+            id: "main",
             children: [
                 {
-                    title: "Movies"
+                    title: "Movies",
+                    parent: "main",
+                    data: <Movies />
                 },
                 {
-                    title: "Albums"
+                    title: "Albums",
+                    parent: "main",
+                    data: <Albums />
                 },
                 {
-                    title: "Posters"
+                    title: "Posters",
+                    parent: "main",
+                    data: <Posters />
                 },
                 {
                     title: "Back",
+                    parent: "body",
                     id: ""
                 }
             ]

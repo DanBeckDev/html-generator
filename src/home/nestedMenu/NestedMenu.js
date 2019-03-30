@@ -23,8 +23,8 @@ export default class NestedMenu extends React.Component{
         switch(menuState){
             case 'header':
                 return <ChildMenu menuData={menuArray.header.children} onClick={onClick} onTemplateChange={this.props.onTemplateChange}/>
-            case 'body':
-                return <ChildMenu menuData={menuArray.body.children} onClick={onClick} onTemplateChange={this.props.onTemplateChange}/>
+            case 'main':
+                return <ChildMenu menuData={menuArray.main.children} onClick={onClick} onTemplateChange={this.props.onTemplateChange}/>
             case 'footer':
                 return <ChildMenu menuData={menuArray.footer.children} onClick={onClick} onTemplateChange={this.props.onTemplateChange}/>
             default:

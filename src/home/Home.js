@@ -6,7 +6,7 @@ export default class Home extends React.Component {
         super()
         this.state = {
             header: '',
-            main: [],
+            main: '',
             footer: ''
         }
     }
@@ -25,9 +25,12 @@ export default class Home extends React.Component {
                 </div>
                 <div className='fl w-80 pa2'>
                     <main>
-                        { 
-                            (this.state.header !== null) && this.state.header
-                        }
+                        <article className=''>
+                            {(this.state.header !== null) && this.state.header}
+                        </article>
+                        <article className='mv5'>
+                            {(this.state.main !== null) && this.state.main}
+                        </article> 
                     </main>
                 </div>
             </>
