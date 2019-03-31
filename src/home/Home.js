@@ -31,6 +31,9 @@ export default class Home extends React.Component {
                         <article className='mv5'>
                             {(this.state.main !== null) && this.state.main}
                         </article> 
+                        <article className='mv5'>
+                            {(this.state.footer !== null) && this.state.footer}
+                        </article> 
                     </main>
                 </div>
             </>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeaderOne, HeaderTwo, HeaderThree, HeaderFour, HeaderFive } from '../collections/Header'  
 import { Movies, Albums, Posters } from '../collections/Body'
+import { FooterOne, FooterTwo, FooterThree, FooterFour, FooterFive, FooterSix, FooterSeven, FooterEight } from '../collections/Footer'
 
 export const menuData = {
     menuArray: {
@@ -70,31 +71,48 @@ export const menuData = {
             id: "footer",
             children: [
                 {
-                    title: "Design #1"
+                    title: "Design #1",
+                    parent: "footer",
+                    data: <FooterOne />
                 },
                 {
-                    title: "Design #2"
+                    title: "Design #2",
+                    parent: "footer",
+                    data: <FooterTwo />
                 },
                 {
-                    title: "Design #3"
+                    title: "Design #3",
+                    parent: "footer",
+                    data: <FooterThree />
                 },
                 {
-                    title: "Design #4"
+                    title: "Design #4",
+                    parent: "footer",
+                    data: <FooterFour />
                 },
                 {
-                    title: "Design #5"
+                    title: "Design #5",
+                    parent: "footer",
+                    data: <FooterFive />
                 },
                 {
-                    title: "Design #6"
+                    title: "Design #6",
+                    parent: "footer",
+                    data: <FooterSix />
                 },
                 {
-                    title: "Design #7"
+                    title: "Design #7",
+                    parent: "footer",
+                    data: <FooterSeven />
                 },
                 {
-                    title: "Design #8"
+                    title: "Design #8",
+                    parent: "footer",
+                    data: <FooterEight />
                 },
                 {
                     title: "Back",
+                    parent: "body",
                     id: ""
                 }
             ]
